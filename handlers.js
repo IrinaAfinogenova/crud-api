@@ -3,7 +3,7 @@ import {
 	v4 as uuidv4,
 	validate as uuidValidate
 } from 'uuid';
-import {prepearUsersList, parseData, checkSchema} from './utils.js';
+import {prepearUsersList, checkSchema} from './utils.js';
 
 // seporate it
 
@@ -51,4 +51,19 @@ export const createUser = (response, data) => {
 		data: 'success'
 	}));
 
+};
+
+export const updateUser = (response, id, data) => {
+	const error = checkSchema(data);
+	// ДРУГИЕ ОШИБОЧНЫЕ СЦЕНАРИИ
+	if (error) {
+		return sendError(response, error)
+	}
+
+	USERS[id] = {...USERS[id], ...data};
+
+	response.writeHead(200, { 'Content-Type': 'application/json' });
+	response.end(JSON.stringify({
+		data: 'success'
+	}));
 };

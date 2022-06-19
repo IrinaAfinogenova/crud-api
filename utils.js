@@ -23,6 +23,7 @@ const validator = {
 export const checkSchema = (value) => {
     const {username, age, hobbies} = value;
     let error = '';
+// а тут ведь нет проверки на обязательность
     Object.keys(validator).forEach((key) => {
         const {validate, errorMessage} = validator[key];
 
@@ -32,4 +33,4 @@ export const checkSchema = (value) => {
     });
     
     return error;
-}
+};

@@ -4,7 +4,8 @@ import {
 	sendUsersList,
 	sendError,
 	sendUser,
-	createUser
+	createUser,
+	updateUser
 } from './handlers.js';
 
 import { writeFile } from 'fs/promises';
@@ -36,12 +37,26 @@ server.on('request', (request, res) => {
 
 	if (method === 'POST') {
 		request.on('data', (data) => {
-			console.log();
 			createUser(res, JSON.parse(data));
 		});
 
 		return;
 	}
+
+	if (method === 'PUT' && !id) {
+		sendUsersList(res);
+
+		return;
+	}
+
+	if (method === 'PUT' && id) {
+		request.on('data', (data) => {
+			updateUser(res, id, JSON.parse(data));
+		});
+
+		return;
+	}
+
 
 	sendError(res, 'invalid request');
   });

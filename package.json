@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon webpack --watch",
-    "build": "nodemon webpack --watch",
+    "start:prod": "webpack --mode production && node dist/main.cjs",
+    "start:dev": "nodemon webpack --mode development",
     "start": "ts-node src/index.ts"
   },
   "repository": {
@@ -22,15 +22,17 @@
   },
   "homepage": "https://github.com/IrinaAfinogenova/crud-api#readme",
   "devDependencies": {
+    "@types/node": "^18.0.0",
+    "@types/dotenv": "^8.2.0",
     "nodemon": "^2.0.16",
+    "ts-loader": "^9.3.0",
     "ts-node": "^10.8.1",
     "typescript": "^3.9.10",
     "webpack": "^5.73.0",
     "webpack-cli": "^4.10.0"
   },
   "dependencies": {
-    "@types/node": "^18.0.0",
-    "ts-loader": "^9.3.0",
+    "dotenv": "^16.0.1",
     "uuid": "^8.3.2"
   }
 }

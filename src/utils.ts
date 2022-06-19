@@ -1,8 +1,12 @@
-export const prepearUsersList = (users) => Object.values(users).filter(Boolean);
+import {User} from './database';
 
-const validateUserName = (userName) => userName && typeof userName === 'string';
-const validateAge = (age) => age && typeof age === 'number';
-const validateHobbies = (hobbies) => hobbies && Array.isArray(hobbies)
+export const prepearUsersList = (users: Record<string, User>) => Object.values(users).filter(Boolean);
+
+//TODO any не ошибка - а указатель рандомное значение
+
+const validateUserName = (userName: any) => userName && typeof userName === 'string';
+const validateAge = (age: any) => age && typeof age === 'number';
+const validateHobbies = (hobbies: any) => hobbies && Array.isArray(hobbies)
     && (hobbies.every(item => typeof item === 'string'))
 
 const validator = {
@@ -20,10 +24,10 @@ const validator = {
     }
 }
 
-export const checkSchema = (value) => {
+export const checkSchema = (value: Record<string, any>) => {
     const {username, age, hobbies} = value;
     let error = '';
-// а тут ведь нет проверки на обязательность
+
     Object.keys(validator).forEach((key) => {
         const {validate, errorMessage} = validator[key];
 

@@ -1,12 +1,9 @@
-import path from 'path';
-import {fileURLToPath} from 'url';
+const path = require("path");
+const URL = require("url");
 
-const __filename = fileURLToPath(import.meta.url);
+const mode = process.env.NODE_ENV;
 
-const __dirname = path.dirname(__filename);
-
-export default {
-  mode: 'development',
+module.exports = {
   target: "node",
   entry: './src/index.ts',
   module: {
@@ -19,10 +16,10 @@ export default {
     ],
   },
   output: {
-    filename: 'main.js',
+    filename: 'main.cjs',
     path: path.resolve(__dirname, 'dist'),
   },
   resolve: {
-    extensions: ['.ts', '.tsx'],
+    extensions: ['.ts', '.js'],
   },
 };

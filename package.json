@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon webpack --watch",
     "build": "nodemon webpack --watch",
-    "start": "ts-node index.ts"
+    "start": "ts-node src/index.ts"
   },
   "repository": {
     "type": "git",

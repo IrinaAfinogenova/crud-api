@@ -8,7 +8,7 @@ const __dirname = path.dirname(__filename);
 export default {
   mode: 'development',
   target: "node",
-  entry: './index.ts',
+  entry: './src/index.ts',
   module: {
     rules: [
       {

@@ -5,7 +5,8 @@ import {
 	sendError,
 	sendUser,
 	createUser,
-	updateUser
+	updateUser,
+	deleteUser
 } from './handlers.js';
 
 import { writeFile } from 'fs/promises';
@@ -53,6 +54,12 @@ server.on('request', (request, res) => {
 		request.on('data', (data) => {
 			updateUser(res, id, JSON.parse(data));
 		});
+
+		return;
+	}
+
+	if (method === 'DELETE') {
+		deleteUser(res, id);
 
 		return;
 	}

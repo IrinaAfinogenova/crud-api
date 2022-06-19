@@ -67,3 +67,16 @@ export const updateUser = (response, id, data) => {
 		data: 'success'
 	}));
 };
+
+export const deleteUser = (response, id) => {
+	if (!USERS[id]) { // все проверки
+		return sendError(response, 'user not found');
+	}
+
+	USERS[id] = null;
+
+	response.writeHead(200, { 'Content-Type': 'application/json' });
+	response.end(JSON.stringify({
+		data: 'success'
+	}));
+}

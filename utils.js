@@ -1,4 +1,4 @@
-export const prepearUsersList = (users) => Object.values(users);
+export const prepearUsersList = (users) => Object.values(users).filter(Boolean);
 
 const validateUserName = (userName) => userName && typeof userName === 'string';
 const validateAge = (age) => age && typeof age === 'number';

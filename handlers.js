@@ -38,14 +38,13 @@ export const sendUser = (response, id) => {
 
 export const createUser = (response, data) => {
 	const id = uuidv4();
-	const userInfo = parseData(data);
-	const error = checkSchema(userInfo)
+	const error = checkSchema(data);
 
 	if (error) {
 		return sendError(response, error)
 	}
 
-	USERS[id] = {id, ...userInfo};
+	USERS[id] = {id, ...data};
 
 	response.writeHead(200, { 'Content-Type': 'application/json' });
 	response.end(JSON.stringify({

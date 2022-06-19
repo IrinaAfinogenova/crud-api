@@ -36,7 +36,8 @@ server.on('request', (request, res) => {
 
 	if (method === 'POST') {
 		request.on('data', (data) => {
-			createUser(res, data.toString());
+			console.log();
+			createUser(res, JSON.parse(data));
 		});
 
 		return;

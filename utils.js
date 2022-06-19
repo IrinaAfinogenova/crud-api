@@ -1,24 +1,9 @@
 export const prepearUsersList = (users) => Object.values(users);
 
-export const parseData = (data) => {
-    if (!data) {
-        return null;
-    }
-
-    console.log( data.split('&'))
-
-    return data.split('&').reduce((acc, item) => {
-        const [key, value] = item.split('='); // не знаю как но нужно сделать проверку на тип данных
-        acc[key] = value;
-
-        return acc;
-    }, {})
-};
-
-const validateUserName = (userName) => username && typeof username === 'string';
+const validateUserName = (userName) => userName && typeof userName === 'string';
 const validateAge = (age) => age && typeof age === 'number';
 const validateHobbies = (hobbies) => hobbies && Array.isArray(hobbies)
-    && hobbies.some(item => typeof item !== 'string')
+    && (hobbies.every(item => typeof item === 'string'))
 
 const validator = {
     username: {
@@ -38,7 +23,6 @@ const validator = {
 export const checkSchema = (value) => {
     const {username, age, hobbies} = value;
     let error = '';
-
     Object.keys(validator).forEach((key) => {
         const {validate, errorMessage} = validator[key];
 

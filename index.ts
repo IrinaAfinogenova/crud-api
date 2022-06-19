@@ -1,5 +1,4 @@
-import http from 'http';
-import url from 'url';
+import * as http from 'http';
 import {
 	sendUsersList,
 	sendError,
@@ -7,15 +6,12 @@ import {
 	createUser,
 	updateUser,
 	deleteUser
-} from './handlers.js';
-
-import { writeFile } from 'fs/promises';
+} from './handlers/index';
 
 const server = http.createServer();
 
 server.on('request', (request, res) => {
     const {url, method} = request;
-
 	const [, api, users, id] = url.split('/');
 
 	if (api !== 'api' || users !== 'users') {
@@ -31,7 +27,7 @@ server.on('request', (request, res) => {
     }
 
 	if (method === 'GET' && id) {
-		sendUser(res, Number(id));
+		sendUser(res, id);
 
 		return;
 	}
@@ -63,7 +59,6 @@ server.on('request', (request, res) => {
 
 		return;
 	}
-
 
 	sendError(res, 'invalid request');
   });

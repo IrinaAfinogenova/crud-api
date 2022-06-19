@@ -3,7 +3,7 @@ import {
 	v4 as uuidv4,
 	validate as uuidValidate
 } from 'uuid';
-import {prepearUsersList, checkSchema} from './utils.js';
+import {prepearUsersList, checkSchema} from './utils.ts';
 
 // seporate it
 

@@ -1,0 +1,29 @@
+{
+  "name": "crud",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IrinaAfinogenova/crud-api.git"
+  },
+  "keywords": [
+    "crud"
+  ],
+  "author": "IrinaAfinogenova",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IrinaAfinogenova/crud-api/issues"
+  },
+  "homepage": "https://github.com/IrinaAfinogenova/crud-api#readme",
+  "devDependencies": {
+    "typescript": "^3.3.3"
+  },
+  "dependencies": {
+    "uuid": "^8.3.2"
+  }
+}
